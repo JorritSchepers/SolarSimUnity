@@ -6,6 +6,7 @@ using TMPro;
 public class FadeInText : MonoBehaviour
 {
     public bool start = false;
+    public int duration = 7;
 
     private bool setTime = false;
     private TextMeshProUGUI text;
@@ -28,7 +29,7 @@ public class FadeInText : MonoBehaviour
                 time = Time.time;
                 setTime = true;
             }
-            if (Time.time > time + 7 && start)
+            if (Time.time > time + duration && start)
             {
                 text.CrossFadeAlpha(0, .3f, false);
             }

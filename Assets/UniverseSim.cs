@@ -16,7 +16,7 @@ public class UniverseSim : MonoBehaviour
         objectivesButton = GameObject.Find("OpenObjectivesPanel");
         GameObject.Find("EditPanel").SetActive(false);
 
-        GameObject.Find("GoogleFormsButton").GetComponent<Button>().onClick.AddListener(delegate () { Application.OpenURL("https://forms.gle/b8Xw7XaDapb8g6bV7"); });
+        // GameObject.Find("GoogleFormsButton").GetComponent<Button>().onClick.AddListener(delegate () { Application.OpenURL("https://forms.gle/b8Xw7XaDapb8g6bV7"); });
     }
 
     // Update is called once per frame

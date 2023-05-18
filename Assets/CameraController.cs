@@ -9,7 +9,7 @@ public class CameraController : MonoBehaviour
 
     public Vector3 targetPos;
     public Vector3 posTarget;
-    
+
     private Rigidbody rb;
 
     public bool cameraMoving = false;
@@ -45,6 +45,13 @@ public class CameraController : MonoBehaviour
         //     posTarget = (targetPlanet.transform.position - new Vector3(0, 0, 0)) * XX;
         // }
 
+        // If I press H, disable the UICanvas
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            Debug.Log("H pressed");
+            GameObject.Find("UICanvas").SetActive(false);
+        }
+
         if (targetPlanet.name == "Sun")
         {
             targetPos = new Vector3(0, 0, 0);
@@ -60,7 +67,7 @@ public class CameraController : MonoBehaviour
         {
             transform.Translate(Vector3.forward * Time.deltaTime * speed);
         }
-        
+
         if (Input.GetKey(KeyCode.Q))
         {
             transform.Translate(Vector3.back * Time.deltaTime * speed);

@@ -1,0 +1,23 @@
+.Navigator {
+}
+
+.top-bar-button {
+    width: 200px;
+    height: 60%;
+    background-color: rgb(0, 234, 255);
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    -unity-text-align: middle-center;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    -unity-font-style: normal;
+    transition-duration: 0.15s;
+    transition-timing-function: linear;
+}
+
+.top-bar-button:hover {
+    background-color: rgb(103, 231, 236);
+    width: 300px;
+}

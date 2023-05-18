@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/uiuss.uss?fileID=7433441132597879392&amp;guid=bb638b377e3064acfb10ee23b6dd1516&amp;type=3#uiuss" />
+    <ui:VisualElement name="Screen" style="width: 100%; height: 100%; position: relative;">
+        <ui:VisualElement name="TopBar" style="width: 100%; height: 100px; background-color: rgba(0, 0, 0, 0.39); justify-content: center; align-items: center; flex-direction: row; flex-wrap: wrap;">
+            <ui:Button text="Planet builder" display-tooltip-when-elided="true" name="OpenPlanetBuilder" class="top-bar-button" />
+            <ui:Button text="Challanges" display-tooltip-when-elided="true" name="OpenChallanges" class="top-bar-button" />
+        </ui:VisualElement>
+        <ui:VisualElement name="Navigator" class="Navigator" style="width: 300px; height: 800px; background-image: none;" />
+    </ui:VisualElement>
+</ui:UXML>
