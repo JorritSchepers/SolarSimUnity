@@ -15,13 +15,13 @@ public class EditButtonBehaviour : MonoBehaviour, IPointerExitHandler
     {
         // Init
         Button button = GetComponent<Button>();
-        
+
         // Get panel in UICanvas called EditPanel
         panel = GameObject.Find("UICanvas").transform.Find("EditPanel");
         panel.gameObject.SetActive(false);
 
         // Get planet name from parent parent
-        planetName = transform.parent.name; 
+        planetName = transform.parent.name;
 
         // Add onClick listener to the button
         button.onClick.AddListener(delegate () { this.EditPlanet(); });
@@ -36,7 +36,7 @@ public class EditButtonBehaviour : MonoBehaviour, IPointerExitHandler
         panel.Find("SizeValue").GetComponent<TextMeshProUGUI>().text = planet.transform.localScale.x.ToString();
         panel.Find("ToggleOrbitPathButton")
             .GetComponentInChildren<TextMeshProUGUI>()
-            .text = planet.GetOrbitPathVisibility() ? "Hide Orbit Path" : "Show Orbit Path";
+            .text = planet.GetOrbitPathVisibility() ? "O" : "Ø";
         panel.gameObject.SetActive(true);
     }
 

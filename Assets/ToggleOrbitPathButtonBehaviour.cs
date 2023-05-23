@@ -18,6 +18,6 @@ public class ToggleOrbitPathButtonBehaviour : MonoBehaviour
         var planetName = GameObject.Find("Title").GetComponent<TextMeshProUGUI>().text;
         var planet = GameObject.Find(planetName).GetComponent<PlanetBehaviour>();
         planet.ToggleOrbitPath();
-        GetComponentInChildren<TextMeshProUGUI>().text = planet.GetOrbitPathVisibility() ? "Hide Orbit Path" : "Show Orbit Path";
+        GetComponentInChildren<TextMeshProUGUI>().text = planet.GetOrbitPathVisibility() ? "O" : "Ø";
     }
 }

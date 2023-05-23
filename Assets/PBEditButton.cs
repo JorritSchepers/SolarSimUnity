@@ -27,7 +27,8 @@ public class PBEditButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     // Update is called once per frame
     void Update()
     {
-        if (buttonPressed) {
+        if (buttonPressed)
+        {
             if (stat == "Distance")
             {
                 planetBuilder.EditDistance(value * factor);
@@ -45,14 +46,16 @@ public class PBEditButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
                 }
                 planetBuilder.EditMass(planetBuilder.planetBehaviour.fMass * 0.005f * x * factor);
             }
-        }   
+        }
     }
 
-    public void OnPointerDown(PointerEventData eventData){
+    public void OnPointerDown(PointerEventData eventData)
+    {
         buttonPressed = true;
     }
-    
-    public void OnPointerUp(PointerEventData eventData){
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
         buttonPressed = false;
     }
 }

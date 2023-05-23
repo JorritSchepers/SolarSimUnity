@@ -18,25 +18,25 @@ public class ManipulationButtonBehaviour : MonoBehaviour
         text = GetComponentInChildren<TextMeshProUGUI>();
         panel = GameObject.Find("UICanvas").transform.Find("EditPanel");
 
-        stat = transform.parent.name; 
+        stat = transform.parent.name;
         // percentage = gameObject.name;
-        text.text = percentage.ToString() + "%";
+        // text.text = percentage.ToString() + "%";
 
-        if (percentage > 0) 
-        {
-            text.text = "+" + text.text;
-        }
+        // if (percentage > 0)
+        // {
+        //     text.text = "+" + text.text;
+        // }
 
         button.onClick.AddListener(delegate () { this.Manipulate(stat, percentage); });
     }
 
 
-    public void Manipulate(string stat, int percentage) 
+    public void Manipulate(string stat, int percentage)
     {
         var planetName = GameObject.Find("Title").GetComponent<TextMeshProUGUI>().text;
         var planet = GameObject.Find(planetName).GetComponent<PlanetBehaviour>();
 
-        switch (stat) 
+        switch (stat)
         {
             case "Mass":
                 ManipulateMass(planet, percentage);
@@ -47,18 +47,18 @@ public class ManipulationButtonBehaviour : MonoBehaviour
         }
     }
 
-    public void ManipulateMass(PlanetBehaviour planet, int percentage) 
+    public void ManipulateMass(PlanetBehaviour planet, int percentage)
     {
-        var factor = GetFactor(percentage); 
+        var factor = GetFactor(percentage);
 
         planet.fMass *= factor;
 
         panel.Find("MassValue").GetComponent<TextMeshProUGUI>().text = planet.GetMass();
     }
 
-    public void ManipulateSize(PlanetBehaviour planet, int percentage) 
+    public void ManipulateSize(PlanetBehaviour planet, int percentage)
     {
-        var factor = GetFactor(percentage); 
+        var factor = GetFactor(percentage);
 
         planet.transform.localScale = new Vector3(
             planet.transform.localScale.x * factor,
@@ -69,13 +69,16 @@ public class ManipulationButtonBehaviour : MonoBehaviour
         panel.Find("SizeValue").GetComponent<TextMeshProUGUI>().text = planet.transform.localScale.x.ToString();
     }
 
-    private float GetFactor(int percentage) 
+    private float GetFactor(int percentage)
     {
         var factor = percentage / 100f;
 
-        if (factor < 0) {
+        if (factor < 0)
+        {
             return 1 / (1 - factor);
-        } else {
+        }
+        else
+        {
             return 1 + factor;
         }
     }
