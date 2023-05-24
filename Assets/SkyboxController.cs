@@ -18,7 +18,7 @@ public class SkyboxController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void GenerateRandomStars()
@@ -26,8 +26,13 @@ public class SkyboxController : MonoBehaviour
         for (int i = 0; i < totalStars; i++)
         {
             GameObject star = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            
-            star.transform.rotation = Random.rotation;
+
+            var ran = Random.rotation;
+
+            ran.x /= 4;
+            ran.z /= 4;
+
+            star.transform.rotation = ran;
 
             var size = Random.Range(minSize, maxSize);
             star.transform.localScale = new Vector3(size, size, size);
@@ -36,5 +41,7 @@ public class SkyboxController : MonoBehaviour
             star.GetComponent<Renderer>().material.color = Color.white;
             star.transform.Translate(Vector3.forward * distance);
         }
+
+        transform.Rotate(new Vector3(0, 0, 45));
     }
 }

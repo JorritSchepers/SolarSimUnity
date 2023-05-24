@@ -16,7 +16,7 @@ public class ObjectivesPanel : MonoBehaviour
     void Start()
     {
         var openButton = GameObject.Find("OpenObjectivesPanel").GetComponent<Button>();
-        openButton.onClick.AddListener(delegate () { gameObject.SetActive(true); });
+        openButton.onClick.AddListener(delegate () { gameObject.SetActive(!gameObject.activeSelf); });
 
         nextButton = transform.Find("NextButton").GetComponent<Button>();
         nextButton.onClick.AddListener(delegate () { NextObjective(); });
@@ -35,7 +35,7 @@ public class ObjectivesPanel : MonoBehaviour
         transform.Find("ObjectiveText").GetComponent<TextMeshProUGUI>().text = objectives[0].text;
     }
 
-    private void initObjectives() 
+    private void initObjectives()
     {
         // Create a list of objectives
         // AddObjective("Double the size of Mars");  
@@ -50,7 +50,7 @@ public class ObjectivesPanel : MonoBehaviour
         objectives.Add(new Objective(text));
     }
 
-    public void NextObjective() 
+    public void NextObjective()
     {
         if (currentObjective == objectives.Count - 1)
         {
@@ -59,7 +59,7 @@ public class ObjectivesPanel : MonoBehaviour
         currentObjective++;
         transform.Find("ObjectiveText").GetComponent<TextMeshProUGUI>().text = objectives[currentObjective].text;
 
-        if (currentObjective == objectives.Count -1)
+        if (currentObjective == objectives.Count - 1)
         {
             nextButton.gameObject.SetActive(false);
         }
@@ -70,13 +70,13 @@ public class ObjectivesPanel : MonoBehaviour
         {
             completeButton.gameObject.SetActive(false);
         }
-        else 
+        else
         {
             completeButton.gameObject.SetActive(true);
         }
     }
 
-    public void PrevObjective() 
+    public void PrevObjective()
     {
         if (currentObjective == 0)
         {
@@ -97,13 +97,13 @@ public class ObjectivesPanel : MonoBehaviour
         {
             completeButton.gameObject.SetActive(false);
         }
-        else 
+        else
         {
             completeButton.gameObject.SetActive(true);
         }
     }
 
-    private void CompleteCurrentObjective(Button button) 
+    private void CompleteCurrentObjective(Button button)
     {
         objectives[currentObjective].Complete();
         transform.Find("ObjectiveText").GetComponent<TextMeshProUGUI>().text = objectives[currentObjective].text;
@@ -123,7 +123,7 @@ public class Objective
 
     public void Complete()
     {
-        if (completed) 
+        if (completed)
         {
             return;
         }

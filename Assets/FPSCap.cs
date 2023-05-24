@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class FPSCap : MonoBehaviour
 {
-      private int target = 120;
-      
-      void Awake()
-      {
-          QualitySettings.vSyncCount = 0;
-          Application.targetFrameRate = target;
-      }
-      
-      void Update()
-      {
-          if(Application.targetFrameRate != target)
-              Application.targetFrameRate = target;
-      }
+    private int target = 240;
+
+    void Awake()
+    {
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = target;
+    }
+
+    void Update()
+    {
+        if (Application.targetFrameRate != target)
+            Application.targetFrameRate = target;
+    }
 }

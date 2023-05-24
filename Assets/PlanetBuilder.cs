@@ -79,6 +79,8 @@ public class PlanetBuilder : MonoBehaviour
     {
         if (panel.gameObject.activeSelf)
         {
+            panel.gameObject.SetActive(false);
+            this.RemovePlanet();
             return;
         }
 

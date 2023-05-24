@@ -9,20 +9,34 @@ public class UniverseSim : MonoBehaviour
 
     private GameObject objectivesButton;
 
+    private GameObject navPanel;
+
     // Start is called before the first frame update
     void Start()
     {
         GetAllPlanets();
         objectivesButton = GameObject.Find("OpenObjectivesPanel");
+        navPanel = GameObject.Find("NavPanel");
         GameObject.Find("EditPanel").SetActive(false);
 
         // GameObject.Find("GoogleFormsButton").GetComponent<Button>().onClick.AddListener(delegate () { Application.OpenURL("https://forms.gle/b8Xw7XaDapb8g6bV7"); });
+
+        GameObject.Find("OpenNavButton").GetComponent<Button>().onClick.AddListener(delegate ()
+        {
+            OpenNavPanel();
+
+        });
     }
 
     // Update is called once per frame
     void Update()
     {
         MovePlanets();
+    }
+
+    void OpenNavPanel()
+    {
+        navPanel.SetActive(!navPanel.activeSelf);
     }
 
     void MovePlanets()
@@ -38,12 +52,12 @@ public class UniverseSim : MonoBehaviour
         }
     }
 
-    public void GetAllPlanets() 
+    public void GetAllPlanets()
     {
         allPlanets = FindObjectsOfType<PlanetBehaviour>();
     }
 
-    public void RemovePlanetFromList(string planetName) 
+    public void RemovePlanetFromList(string planetName)
     {
         var newList = new PlanetBehaviour[allPlanets.Length - 1];
 
