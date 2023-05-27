@@ -31,7 +31,6 @@ public class SpaceshipBehaviour : MonoBehaviour
         normalUI = GameObject.Find("UICanvas");
         spaceshipUI = GameObject.Find("SpaceshipUI");
         spaceshipUI.SetActive(false);
-
     }
 
     // Update is called once per frame
@@ -42,8 +41,7 @@ public class SpaceshipBehaviour : MonoBehaviour
             return;
         }
 
-        // Set the camera to the back of the spaceship facing the front
-        Camera.main.transform.position = transform.position + transform.forward * 1;
+        Camera.main.transform.position = transform.position;
         Camera.main.transform.rotation = transform.rotation;
 
         // Move the spaceship
