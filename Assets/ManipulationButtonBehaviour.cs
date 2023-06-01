@@ -19,13 +19,6 @@ public class ManipulationButtonBehaviour : MonoBehaviour
         panel = GameObject.Find("UICanvas").transform.Find("EditPanel");
 
         stat = transform.parent.name;
-        // percentage = gameObject.name;
-        // text.text = percentage.ToString() + "%";
-
-        // if (percentage > 0)
-        // {
-        //     text.text = "+" + text.text;
-        // }
 
         button.onClick.AddListener(delegate () { this.Manipulate(stat, percentage); });
     }

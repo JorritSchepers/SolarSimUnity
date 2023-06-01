@@ -8,17 +8,12 @@ public class SkyboxController : MonoBehaviour
     public int distance = 100000;
     public int minSize = 1;
     public int maxSize = 5;
+    public int factor = 6;
 
     // Start is called before the first frame update
     void Start()
     {
         GenerateRandomStars();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     void GenerateRandomStars()
@@ -29,8 +24,8 @@ public class SkyboxController : MonoBehaviour
 
             var ran = Random.rotation;
 
-            ran.x /= 4;
-            ran.z /= 4;
+            ran.x /= factor;
+            ran.z /= factor;
 
             star.transform.rotation = ran;
 

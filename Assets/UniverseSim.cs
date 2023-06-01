@@ -24,7 +24,6 @@ public class UniverseSim : MonoBehaviour
         GameObject.Find("OpenNavButton").GetComponent<Button>().onClick.AddListener(delegate ()
         {
             OpenNavPanel();
-
         });
     }
 
@@ -32,6 +31,11 @@ public class UniverseSim : MonoBehaviour
     void Update()
     {
         MovePlanets();
+
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            GameObject.Find("UICanvas").SetActive(false);
+        }
     }
 
     void OpenNavPanel()

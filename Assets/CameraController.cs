@@ -79,22 +79,22 @@ public class CameraController : MonoBehaviour
                 transform.Translate(Vector3.back * Time.deltaTime * speed);
             }
 
-            if (Input.GetKey(KeyCode.A))
+            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
             {
                 transform.Translate(Vector3.left * Time.deltaTime * speed);
             }
 
-            if (Input.GetKey(KeyCode.D))
+            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
             {
                 transform.Translate(Vector3.right * Time.deltaTime * speed);
             }
 
-            if (Input.GetKey(KeyCode.S))
+            if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
             {
                 transform.Translate(Vector3.down * Time.deltaTime * speed);
             }
 
-            if (Input.GetKey(KeyCode.W))
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
             {
                 transform.Translate(Vector3.up * Time.deltaTime * speed);
             }
