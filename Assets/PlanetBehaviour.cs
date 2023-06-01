@@ -65,10 +65,10 @@ public class PlanetBehaviour : MonoBehaviour
         rb.mass = mass;
         velocity = initVelocity;
         allBodies = FindObjectsOfType<PlanetBehaviour>();
-        
+
         lineRenderer.positionCount = 0;
 
-        initTime = 2 / ( (initVelocity.z / 8500000) * (initVelocity.z / 8500000) * (initVelocity.z / 8500000) );;
+        initTime = 2 / ((initVelocity.z / 8500000) * (initVelocity.z / 8500000) * (initVelocity.z / 8500000)); ;
 
         universeSim = FindObjectOfType<UniverseSim>();
         navPanel = GameObject.Find("NavPanel");
@@ -104,7 +104,7 @@ public class PlanetBehaviour : MonoBehaviour
                 x = !x;
             }
         }
-        else 
+        else
         {
             if (currentVel > prevVel)
             {
@@ -116,32 +116,32 @@ public class PlanetBehaviour : MonoBehaviour
         actYearCount = yearCount / 2;
 
         // Reset draw lines
-        if (Input.GetKey(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             i = 0;
             j = 0;
             lineRenderer.positionCount = 0;
         }
 
-        if (Input.GetKey(KeyCode.K))
+        if (Input.GetKeyDown(KeyCode.K))
         {
             ToggleOrbitPath();
         }
     }
 
-    public void CalculateTrailTime() 
+    public void CalculateTrailTime()
     {
         if (trailRenderer == null)
         {
             trailRenderer = GetComponent<TrailRenderer>();
         }
 
-        trailRenderer.time = 2 / ( (initVelocity.z / 6500000) * (initVelocity.z / 6500000) * (initVelocity.z / 6500000) ) * fpsFactor;
+        trailRenderer.time = 2 / ((initVelocity.z / 6500000) * (initVelocity.z / 6500000) * (initVelocity.z / 6500000)) * fpsFactor;
     }
 
     void DrawFlightLine()
     {
-        if (i%10 == 0) 
+        if (i % 10 == 0)
         {
             lineRenderer.positionCount++;
             lineRenderer.SetPosition(j, transform.position);
@@ -150,11 +150,11 @@ public class PlanetBehaviour : MonoBehaviour
         i++;
     }
 
-    public void MovePlanet() 
+    public void MovePlanet()
     {
         if (rb != null)
         {
-            rb.MovePosition (rb.position + velocity * timeStep);    
+            rb.MovePosition(rb.position + velocity * timeStep);
         }
     }
 
@@ -162,7 +162,7 @@ public class PlanetBehaviour : MonoBehaviour
     {
         foreach (var otherBody in allBodies)
         {
-            if (otherBody == this) 
+            if (otherBody == this)
             {
                 continue;
             }
@@ -172,15 +172,15 @@ public class PlanetBehaviour : MonoBehaviour
 
             Vector3 forceDir = (otherBody.rb.position - rb.position).normalized;
             Vector3 acceleration = forceDir * g * otherBody.fMass / r;
-            
+
             velocity += acceleration * timeStep;
         }
     }
 
-    public string GetMass() 
+    public string GetMass()
     {
         var s = fMass.ToString();
-        var power = s.Substring(s.Length-2, 2);
+        var power = s.Substring(s.Length - 2, 2);
 
         return s.Substring(0, 4) + " e" + power;
     }
@@ -205,7 +205,9 @@ public class PlanetBehaviour : MonoBehaviour
         if (lineRenderer.widthMultiplier == 0)
         {
             lineRenderer.widthMultiplier = 1f;
-        } else {
+        }
+        else
+        {
             lineRenderer.widthMultiplier = 0;
         }
     }
@@ -215,7 +217,7 @@ public class PlanetBehaviour : MonoBehaviour
         return lineRenderer.widthMultiplier > 0;
     }
 
-    public void Reset() 
+    public void Reset()
     {
         transform.position = new Vector3(fDistance, 0, 0);
         velocity = initVelocity;
@@ -226,7 +228,7 @@ public class PlanetBehaviour : MonoBehaviour
         trailRenderer.Clear();
     }
 
-    public void Kill() 
+    public void Kill()
     {
         universeSim.RemovePlanetFromList(gameObject.name);
         navPanel.GetComponent<NavPanel>().RemovePlanet(gameObject.name);

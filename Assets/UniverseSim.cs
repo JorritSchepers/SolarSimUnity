@@ -31,11 +31,6 @@ public class UniverseSim : MonoBehaviour
     void Update()
     {
         MovePlanets();
-
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            GameObject.Find("UICanvas").SetActive(false);
-        }
     }
 
     void OpenNavPanel()
