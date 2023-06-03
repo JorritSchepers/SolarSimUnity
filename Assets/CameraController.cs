@@ -22,6 +22,8 @@ public class CameraController : MonoBehaviour
 
     int speed = 1000;
 
+    private GameObject ui;
+
     // private int cameraFlightSpeed = 250;
     // private int targetFlightSpeed = 350;
 
@@ -32,6 +34,7 @@ public class CameraController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         universeSim = FindObjectOfType<UniverseSim>();
         SetTarget("Sun");
+        ui = GameObject.Find("UICanvas");
 
         spaceshipBehaviour = FindObjectOfType<SpaceshipBehaviour>();
     }
@@ -49,11 +52,9 @@ public class CameraController : MonoBehaviour
         //     posTarget = (targetPlanet.transform.position - new Vector3(0, 0, 0)) * XX;
         // }
 
-        // If I press H, disable the UICanvas
-        if (Input.GetKeyDown(KeyCode.H))
+        if (Input.GetKeyDown(KeyCode.U))
         {
-            Debug.Log("H pressed");
-            GameObject.Find("UICanvas").SetActive(false);
+            ui.SetActive(!ui.activeSelf);
         }
 
         if (targetPlanet.name == "Sun")

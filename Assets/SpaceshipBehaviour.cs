@@ -7,14 +7,15 @@ using UnityEngine.UI;
 public class SpaceshipBehaviour : MonoBehaviour
 {
     public bool spaceshipMode = false;
-    public float speed = 0.1f;
+    public float speed = 1f;
 
-    private float velocity = 50;
+    private float velocity = 40;
     private TextMeshProUGUI speedDisplay;
     private GameObject crosshair;
     private GameObject normalUI;
     private GameObject spaceshipUI;
     private GameObject exitButton;
+    public int maxSpeed = 100;
 
     // Start is called before the first frame update
     void Start()
@@ -47,7 +48,10 @@ public class SpaceshipBehaviour : MonoBehaviour
         // Move the spaceship
         if (Input.GetKey(KeyCode.O))
         {
-            velocity += speed;
+            if (velocity < maxSpeed)
+            {
+                velocity += speed;
+            }
         }
         if (Input.GetKey(KeyCode.L))
         {
@@ -93,7 +97,19 @@ public class SpaceshipBehaviour : MonoBehaviour
 
         transform.Translate(Vector3.forward * Time.deltaTime * velocity);
 
-        speedDisplay.text = "Speed: " + velocity;
+        UpdateSpeedText();
+    }
+
+    private void UpdateSpeedText()
+    {
+        var bars = velocity / 3;
+        var s = "";
+
+        for (var i = 0; i < bars; i++)
+        {
+            s += "|";
+        }
+        speedDisplay.text = s;
     }
 
     public void ActivateSpaceShip()

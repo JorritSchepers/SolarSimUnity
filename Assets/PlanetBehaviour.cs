@@ -127,6 +127,11 @@ public class PlanetBehaviour : MonoBehaviour
         {
             ToggleOrbitPath();
         }
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            ToggTrailRenderer();
+        }
     }
 
     public void CalculateTrailTime()
@@ -209,6 +214,18 @@ public class PlanetBehaviour : MonoBehaviour
         else
         {
             lineRenderer.widthMultiplier = 0;
+        }
+    }
+
+    public void ToggTrailRenderer()
+    {
+        if (trailRenderer.widthMultiplier == 0)
+        {
+            trailRenderer.widthMultiplier = 1f;
+        }
+        else
+        {
+            trailRenderer.widthMultiplier = 0;
         }
     }
 
