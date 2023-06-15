@@ -24,25 +24,34 @@ public class TimeStepEditButton : MonoBehaviour, IPointerDownHandler, IPointerUp
     {
         if (buttonPressed)
         {
+            var x = value;
+
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                x *= 10;
+            }
+
             foreach (var planet in universeSim.allPlanets)
             {
-                var newTimeStep = planet.timeStep += value;
+                var newTimeStep = planet.timeStep += x;
 
                 if (newTimeStep < 0)
                 {
                     newTimeStep = 0;
                 }
-                
+
                 planet.SetTimeStep(newTimeStep);
             }
         }
     }
 
-    public void OnPointerDown(PointerEventData eventData){
+    public void OnPointerDown(PointerEventData eventData)
+    {
         buttonPressed = true;
     }
-    
-    public void OnPointerUp(PointerEventData eventData){
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
         buttonPressed = false;
     }
 }

@@ -51,6 +51,9 @@ public class PlanetBehaviour : MonoBehaviour
     void Start()
     {
         initTimeStep = Time.fixedDeltaTime / 20000000 * 10 * 4;
+
+        // initTimeStep = 0;
+
         timeStep = initTimeStep;
 
         rb = GetComponent<Rigidbody>();
@@ -114,14 +117,6 @@ public class PlanetBehaviour : MonoBehaviour
         }
 
         actYearCount = yearCount / 2;
-
-        // Reset draw lines
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            i = 0;
-            j = 0;
-            lineRenderer.positionCount = 0;
-        }
 
         if (Input.GetKeyDown(KeyCode.K))
         {
@@ -250,5 +245,20 @@ public class PlanetBehaviour : MonoBehaviour
         universeSim.RemovePlanetFromList(gameObject.name);
         navPanel.GetComponent<NavPanel>().RemovePlanet(gameObject.name);
         Destroy(gameObject);
+    }
+
+    public string GetVelocity()
+    {
+        // return "" + Mathf.Round(velocity.z / 18000) / 10;
+
+        var x = Mathf.Abs(velocity.x * velocity.x);
+        var y = Mathf.Abs(velocity.y * velocity.y);
+        var z = Mathf.Abs(velocity.z * velocity.z);
+
+        // var xy = Mathf.Sqrt(x + y);
+        // var xyz = Mathf.Sqrt(xy + z);
+        var xz = Mathf.Sqrt(x + z);
+
+        return "" + Mathf.Round(xz / 180000);
     }
 }

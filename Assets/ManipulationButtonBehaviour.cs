@@ -37,6 +37,9 @@ public class ManipulationButtonBehaviour : MonoBehaviour
             case "Size":
                 ManipulateSize(planet, percentage);
                 break;
+            case "Velocity":
+                ManipulateVelocity(planet, percentage);
+                break;
         }
     }
 
@@ -60,6 +63,16 @@ public class ManipulationButtonBehaviour : MonoBehaviour
         );
 
         panel.Find("SizeValue").GetComponent<TextMeshProUGUI>().text = planet.transform.localScale.x.ToString();
+    }
+
+    public void ManipulateVelocity(PlanetBehaviour planet, int percentage)
+    {
+        var factor = GetFactor(percentage);
+
+        planet.initVelocity *= factor;
+        planet.velocity *= factor;
+
+        panel.Find("VelocityValue").GetComponent<TextMeshProUGUI>().text = planet.GetVelocity() + " km/s";
     }
 
     private float GetFactor(int percentage)

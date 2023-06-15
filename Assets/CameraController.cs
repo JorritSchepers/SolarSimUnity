@@ -42,6 +42,8 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        FocusPlanetShortKeys();
+
         // if (cameraMoving)
         // {
         //     targetPos = Vector3.MoveTowards(targetPos, targetPlanet.transform.position, targetFlightSpeed * Time.deltaTime);
@@ -57,14 +59,7 @@ public class CameraController : MonoBehaviour
             ui.SetActive(!ui.activeSelf);
         }
 
-        if (targetPlanet.name == "Sun")
-        {
-            targetPos = new Vector3(0, 0, 0);
-        }
-        else
-        {
-            targetPos = targetPlanet.transform.position;
-        }
+        targetPos = targetPlanet.transform.position;
 
         if (!spaceshipBehaviour.spaceshipMode)
         {
@@ -82,23 +77,71 @@ public class CameraController : MonoBehaviour
 
             if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
             {
-                transform.Translate(Vector3.left * Time.deltaTime * speed);
+                // transform.Translate(Vector3.left * Time.deltaTime * speed);
+                transform.RotateAround(targetPlanet.transform.position, Vector3.up, speed * Time.deltaTime / 6 / 3);
             }
 
             if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
             {
-                transform.Translate(Vector3.right * Time.deltaTime * speed);
+                // transform.Translate(Vector3.right * Time.deltaTime * speed);
+                transform.RotateAround(targetPlanet.transform.position, Vector3.down, speed * Time.deltaTime / 6 / 3);
             }
 
             if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
             {
-                transform.Translate(Vector3.down * Time.deltaTime * speed);
+                transform.Translate(Vector3.down * Time.deltaTime * speed / 3);
             }
 
             if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
             {
-                transform.Translate(Vector3.up * Time.deltaTime * speed);
+                transform.Translate(Vector3.up * Time.deltaTime * speed / 3);
+                // transform.RotateAround(targetPlanet.transform.position, Vector3.right, speed * Time.deltaTime / 6);
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            ScreenCapture.CaptureScreenshot("test.png", 1);
+        }
+    }
+
+    private void FocusPlanetShortKeys()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            this.targetPlanet = GameObject.Find("Sun").GetComponent<PlanetBehaviour>();
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            this.targetPlanet = GameObject.Find("Mercury").GetComponent<PlanetBehaviour>();
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            this.targetPlanet = GameObject.Find("Venus").GetComponent<PlanetBehaviour>();
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            this.targetPlanet = GameObject.Find("Earth").GetComponent<PlanetBehaviour>();
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            this.targetPlanet = GameObject.Find("Mars").GetComponent<PlanetBehaviour>();
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            this.targetPlanet = GameObject.Find("Jupiter").GetComponent<PlanetBehaviour>();
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            this.targetPlanet = GameObject.Find("Saturn").GetComponent<PlanetBehaviour>();
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            this.targetPlanet = GameObject.Find("Uranus").GetComponent<PlanetBehaviour>();
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha8))
+        {
+            this.targetPlanet = GameObject.Find("Neptune").GetComponent<PlanetBehaviour>();
         }
     }
 

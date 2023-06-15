@@ -31,11 +31,11 @@ public class PBEditButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         {
             if (stat == "Distance")
             {
-                planetBuilder.EditDistance(value * factor);
+                planetBuilder.EditDistance(value * factor * 10);
             }
             else if (stat == "Velocity")
             {
-                planetBuilder.EditVelocity(value * factor);
+                planetBuilder.EditVelocity(value * factor * 10);
             }
             else if (stat == "Mass")
             {
@@ -44,7 +44,7 @@ public class PBEditButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
                 {
                     x = -1;
                 }
-                planetBuilder.EditMass(planetBuilder.planetBehaviour.fMass * 0.005f * x * factor);
+                planetBuilder.EditMass(planetBuilder.planetBehaviour.fMass * 0.005f * x * factor * 10);
             }
         }
     }

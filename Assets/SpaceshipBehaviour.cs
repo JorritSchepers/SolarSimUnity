@@ -7,9 +7,9 @@ using UnityEngine.UI;
 public class SpaceshipBehaviour : MonoBehaviour
 {
     public bool spaceshipMode = false;
-    public float speed = 1f;
+    public float speedStep = 1f;
 
-    private float velocity = 40;
+    public float velocity = 40;
     private TextMeshProUGUI speedDisplay;
     private GameObject crosshair;
     private GameObject normalUI;
@@ -42,6 +42,15 @@ public class SpaceshipBehaviour : MonoBehaviour
             return;
         }
 
+        // if (transform.rotation.x > 0)
+        // {
+        //     transform.Rotate(Vector3.right * -.05f * 6, Space.World);
+        // }
+        // else
+        // {
+        //     transform.Rotate(Vector3.forward * -0.1f * 6, Space.World);
+        // }
+
         Camera.main.transform.position = transform.position;
         Camera.main.transform.rotation = transform.rotation;
 
@@ -50,20 +59,26 @@ public class SpaceshipBehaviour : MonoBehaviour
         {
             if (velocity < maxSpeed)
             {
-                velocity += speed;
+                velocity += speedStep;
             }
         }
         if (Input.GetKey(KeyCode.L))
         {
-            if (velocity > speed)
+            if (velocity > speedStep)
             {
-                velocity -= speed;
+                velocity -= speedStep;
             }
             else
             {
                 velocity = 0;
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            spaceshipUI.SetActive(!spaceshipUI.activeSelf);
+        }
+
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             transform.Rotate(Vector3.forward * Time.deltaTime * 100);
@@ -119,7 +134,9 @@ public class SpaceshipBehaviour : MonoBehaviour
         Camera.main.fieldOfView = 90;
         crosshair.gameObject.SetActive(true);
         speedDisplay.gameObject.SetActive(true);
-        transform.LookAt(new Vector3(0, 0, 0));
+        transform.LookAt(
+            Camera.main.GetComponent<CameraController>().targetPlanet.transform.position
+        );
         normalUI.SetActive(false);
         spaceshipUI.SetActive(true);
     }

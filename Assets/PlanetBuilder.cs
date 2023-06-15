@@ -10,8 +10,8 @@ public class PlanetBuilder : MonoBehaviour
     public Transform panel;
 
     private UniverseSim universeSim;
-    private int distance;
-    private float mass;
+    public int distance;
+    public float mass;
     private GameObject planet;
     public PlanetBehaviour planetBehaviour;
     private GameObject arrow;
@@ -19,6 +19,7 @@ public class PlanetBuilder : MonoBehaviour
     private TextMeshProUGUI distanceText;
     private TextMeshProUGUI velocityText;
     private TextMeshProUGUI massText;
+    public Vector3 vel;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +40,8 @@ public class PlanetBuilder : MonoBehaviour
         universeSim = GameObject.Find("UniverseSim").GetComponent<UniverseSim>();
 
         distance = Random.Range(50, 200);
+        mass = 2e+20f;
+        vel = new Vector3(0, 0, 5000000);
 
         // Add RemovePlanet to CloseButton
         panel.Find("CloseButton").GetComponent<Button>().onClick.AddListener(delegate () { this.RemovePlanet(); });
@@ -84,7 +87,6 @@ public class PlanetBuilder : MonoBehaviour
             return;
         }
 
-        mass = 2e+20f;
         planet = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         planet.transform.position = new Vector3(distance, 0, 0); ;
         planet.transform.localScale = new Vector3(7, 7, 7);
@@ -105,8 +107,8 @@ public class PlanetBuilder : MonoBehaviour
         planetBehaviour = planet.GetComponent<PlanetBehaviour>();
         planetBehaviour.fMass = mass * Mathf.Sqrt(planetBehaviour.factor);
         planetBehaviour.fDistance = distance * planetBehaviour.factor;
-        planetBehaviour.initVelocity = new Vector3(0, 0, 5000000);
-        planetBehaviour.velocity = new Vector3(0, 0, 5000000);
+        planetBehaviour.initVelocity = vel;
+        planetBehaviour.velocity = vel;
         // planetBehaviour.CalculateTrailTime();
 
         UpdateDistanceText(planet.transform.position.x * 1e+6f);
