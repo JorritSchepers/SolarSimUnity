@@ -11746,7 +11746,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: Distance
-  value: -0.1
+  value: -0.01
 --- !u!114 &921246325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94755,7 +94755,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: Velocity
-  value: 1000
+  value: 300
 --- !u!114 &1675031674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106347,7 +106347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: Velocity
-  value: -1000
+  value: -300
 --- !u!114 &1770596530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116977,7 +116977,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: Distance
-  value: 0.1
+  value: 0.01
 --- !u!114 &1805357272
 MonoBehaviour:
   m_ObjectHideFlags: 0

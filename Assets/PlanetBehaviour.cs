@@ -131,12 +131,14 @@ public class PlanetBehaviour : MonoBehaviour
 
     public void CalculateTrailTime()
     {
+        var x = 6000000; // 6500000
+
         if (trailRenderer == null)
         {
             trailRenderer = GetComponent<TrailRenderer>();
         }
 
-        trailRenderer.time = 2 / ((initVelocity.z / 6500000) * (initVelocity.z / 6500000) * (initVelocity.z / 6500000)) * fpsFactor;
+        trailRenderer.time = 2 / ((initVelocity.z / x) * (initVelocity.z / x) * (initVelocity.z / x)) * fpsFactor;
     }
 
     void DrawFlightLine()

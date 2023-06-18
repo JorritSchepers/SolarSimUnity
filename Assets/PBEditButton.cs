@@ -44,7 +44,7 @@ public class PBEditButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
                 {
                     x = -1;
                 }
-                planetBuilder.EditMass(planetBuilder.planetBehaviour.fMass * 0.005f * x * factor * 10);
+                planetBuilder.EditMass(planetBuilder.planetBehaviour.fMass * 0.001f * x * factor * 10);
             }
         }
     }

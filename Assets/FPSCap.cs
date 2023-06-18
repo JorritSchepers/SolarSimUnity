@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FPSCap : MonoBehaviour
 {
-    private int target = 600;
+    private int target = 301;
 
     void Awake()
     {
